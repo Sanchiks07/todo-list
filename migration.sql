@@ -15,3 +15,6 @@ CREATE TABLE tasks (
     due_date DATE NOT NULL,
     FOREIGN KEY (list_id) REFERENCES lists(id)
 );
+
+INSERT INTO lists (name) VALUES
+('Personal'), ('Work');
