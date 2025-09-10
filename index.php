@@ -18,7 +18,21 @@ $db = new Database($config["database"]);
 <body>
     <div class="container">
         <nav>
-            Navbar
+            <div class="tasks">
+                <h2>Tasks</h2>
+                <button class="upcoming">Upcoming</button>
+                <button class="today">Today</button>
+            </div>
+            <div class="lists">
+                <button class="all">All</button>
+                <button class="personal">Personal</button>
+                <button class="work">Work</button>  
+                <button class="add-list">+ Add List</button>
+            </div>
+            <div class="tools">
+                <p>Local time</p>  
+                <button class="dark-mode">Dark</button>    
+            </div>
         </nav>
 
         <div class="today-tasks">Today</div>

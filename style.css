@@ -24,14 +24,35 @@ time, mark, audio, video {
     height: 100vh;
 }
 
-nav {
-    grid-column: 1;
-}
-
 .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks {
     grid-column: 2;
 }
 
 .new-tisk, .edit-task {
     grid-column: 3;
+}
+
+nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .new-task, .edit-task {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: inset;
+}
+/* prieks navbar */
+nav{
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.tools{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.lists, .tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
