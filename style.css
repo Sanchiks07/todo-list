@@ -39,6 +39,7 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     border-radius: 5px;
     box-shadow: inset;
 }
+
 /* prieks navbar */
 nav{
     grid-column: 1;
@@ -62,4 +63,26 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    max-height: 300px;
+}
+
+/* output */
+.tasks-output {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: inset;
+    cursor: pointer;
+}
+
+.task-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
