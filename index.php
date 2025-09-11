@@ -30,7 +30,7 @@ $db = new Database($config["database"]);
                 <button class="add-list">+ Add List</button>
             </div>
             <div class="tools">
-                <p>Local time</p>  
+                <div id="txt"></div>
                 <button class="dark-mode">Dark</button>    
             </div>
         </nav>
@@ -58,5 +58,6 @@ $db = new Database($config["database"]);
         </div>
         <div class="edit-task" style="display: none;">Edit Task</div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
