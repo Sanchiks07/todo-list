@@ -35,13 +35,27 @@ $db = new Database($config["database"]);
             </div>
         </nav>
 
-        <div class="today-tasks">Today</div>
+        <div class="today-tasks">
+            <h2>Today</h2>
+        </div>
         <div class="upcoming-tasks" style="display: none;">Upcoming</div>
         <div class="personal-tasks" style="display: none;">Personal</div>
         <div class="work-tasks" style="display: none;">Work</div>
         <div class="all-tasks" style="display: none;">All</div>
 
-        <div class="new-task">New Task</div>
+        <div class="new-task">
+            <h2>Add task</h2>
+            <form action="add_task.php" method="POST">
+                <input type="text" name="title" placeholder="Task..." required>
+                <input type="text" name="description" placeholder="Description...">
+                <input type="date" name="due_date" required>
+                <select name="list">
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                </select>
+                <button type="submit">Save</button>
+            </form>
+        </div>
         <div class="edit-task" style="display: none;">Edit Task</div>
     </div>
 </body>

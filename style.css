@@ -17,7 +17,7 @@ time, mark, audio, video {
 	border: 0;
 }
 
-/* ----------CUSTOM CSS---------- */
+/* Mūsu css */
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
@@ -52,6 +52,13 @@ nav{
     justify-content: space-between;
 }
 .lists, .tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* add task */
+form {
     display: flex;
     flex-direction: column;
     gap: 10px;
