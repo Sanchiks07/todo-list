@@ -118,9 +118,15 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     
                         </div>
                         <div class="task-description" style="display: none;">
-                             <p class="description-label">Description:</p>
+                            <p class="description-label">Description:</p>
                             <p><?= htmlspecialchars($task["description"]) ?></p>
-                            <button class="edit" onclick="editTask(this)">Edit</button>
+                            <div class="task-actions">
+                                <button class="edit" onclick="editTask(this)">Edit</button>
+                                <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
+                                    <input type="hidden" name="id" value="<?= $task['id'] ?>">
+                                    <button type="submit" class="delete">Delete</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
@@ -169,9 +175,16 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             ?>
                         </div>
                         <div class="task-description" style="display: none;">
-                             <p class="description-label">Description:</p>
+                            <p class="description-label">Description:</p>
                             <p><?= htmlspecialchars($task["description"]) ?></p>
-                            <button class="edit" onclick="editTask(this)">Edit</button>
+                            <div class="task-actions">
+                                <button class="edit" onclick="editTask(this)">Edit</button>
+                                <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
+                                    <input type="hidden" name="id" value="<?= $task['id'] ?>">
+                                    <button type="submit" class="delete">Delete</button>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                 <?php } ?>
@@ -220,9 +233,16 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             ?>
                         </div>
                         <div class="task-description" style="display: none;">
-                             <p class="description-label">Description:</p>
+                            <p class="description-label">Description:</p>
                             <p><?= htmlspecialchars($task["description"]) ?></p>
-                            <button class="edit" onclick="editTask(this)">Edit</button>
+                            <div class="task-actions">
+                                <button class="edit" onclick="editTask(this)">Edit</button>
+                                <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
+                                    <input type="hidden" name="id" value="<?= $task['id'] ?>">
+                                    <button type="submit" class="delete">Delete</button>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                 <?php } ?>
@@ -273,7 +293,14 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
                             <p><?= htmlspecialchars($task["description"]) ?></p>
-                            <button class="edit" onclick="editTask(this)">Edit</button>
+                            <div class="task-actions">
+                                <button class="edit" onclick="editTask(this)">Edit</button>
+                                <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
+                                    <input type="hidden" name="id" value="<?= $task['id'] ?>">
+                                    <button type="submit" class="delete">Delete</button>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                 <?php } ?>
@@ -324,7 +351,14 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
                             <p><?= htmlspecialchars($task["description"]) ?><p/>
-                            <button class="edit" onclick="editTask(this)">Edit</button>
+                            <div class="task-actions">
+                                <button class="edit" onclick="editTask(this)">Edit</button>
+                                <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
+                                    <input type="hidden" name="id" value="<?= $task['id'] ?>">
+                                    <button type="submit" class="delete">Delete</button>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                 <?php } ?>
@@ -367,6 +401,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     <option value="work">Work</option>
                 </select>
                 <button type="submit">Save</button>
+                <button class="cancel" onclick="cancelEdit()">Cancel</button>
             </form>
         </div>
     </div>

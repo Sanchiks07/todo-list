@@ -11,13 +11,24 @@ function startTime() {
 
     setTimeout(startTime, 500);
 }
-window.onload = startTime;
+window.onload = () => {
+    startTime();
+
+    // applies dark mode pēc lapas reload
+    if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("dark-mode").textContent = "Light";
+    }
+};
 
 // dark mode 
 function darkMode() {
-    var element = document.body;
-    var button = document.getElementById("dark-mode");
-    var isNowInDarkMode = element.classList.toggle("dark-mode");
+    const element = document.body;
+    const button = document.getElementById("dark-mode");
+    const isNowInDarkMode = element.classList.toggle("dark-mode");
+
+    // saglabā dark mode pēc lapas reload
+    localStorage.setItem("darkMode", isNowInDarkMode);
 
     if (isNowInDarkMode) {
         button.textContent = "Light";
@@ -45,7 +56,7 @@ function showTasks(showClass, hideClass1, hideClass2, hideClass3, hideClass4) {
     document.querySelector('.' + hideClass4).style.display='none';
 }
 
-// parāda pareizo formu un ievieto tā task value
+// parāda pareizo formu (add vai edit) un ievieto noteiktā task value priekš edit
 function editTask(button) {
     document.querySelector('.edit-task').style.display='block';
     document.querySelector('.new-task').style.display='none';
@@ -66,6 +77,12 @@ function editTask(button) {
     form.querySelector('select[name="list"]').value = list;
 }
 
+// cancel edit
+function cancelEdit() {
+    document.querySelector('.new-task').style.display='block';
+    document.querySelector('.edit-task').style.display='none';
+}
+
 // prieks navbar saisinasans ar toogle
 const container = document.querySelector('.container');
 const menuToggle = document.getElementById('menu-toggle');
@@ -73,4 +90,3 @@ const menuToggle = document.getElementById('menu-toggle');
 menuToggle.addEventListener('click', () => {
     container.classList.toggle('nav-collapsed');
 });
-

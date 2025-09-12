@@ -18,14 +18,17 @@ time, mark, audio, video {
 }
 
 /* Mūsu css */
-body{
+body {
     background-color:#e6e6eb;
 }
+
 button:hover {
-    background-color: #adaaaa; /* Change the background color */
-    border-color: #999; /* Change the border color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    background-color: #adaaaa;
+    border-color: #999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
+
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
@@ -49,9 +52,9 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     margin: 20px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    
 }
-#dark-mode{ /* pati poga */
+
+#dark-mode { /* pati poga */
     width: 60px; 
     height: 30px;
     background-color: #1f2937; 
@@ -62,15 +65,26 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     font-size: 15px;
     transition: background-color 0.3s; /
 }
+
 .dark-mode,/* dark-mode funkcija */
 .dark-mode button { 
     background-color: #49494c;
     color: white;
 }
-.dark-mode #dark-mode{
+
+.dark-mode .delete {
+    background-color: #cb2435;
+}
+
+.dark-mode .delete:hover {
+    background-color: #a01e2b;
+}
+
+.dark-mode #dark-mode {
     background-color: rgb(201, 198, 198); 
     color: #1f2937;
 }
+
 .dark-mode input,
 .dark-mode textarea,
 .dark-mode select {
@@ -78,6 +92,7 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     color: #eee;
     border: 1px solid #555;
 }
+
 .dark-mode nav,
 .dark-mode .today-tasks,
 .dark-mode .upcoming-tasks,
@@ -90,17 +105,21 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     background-color: #282829;
     color: white;
 }
+
 .dark-mode .tasks-output{
     color: black;
 }
-.dark-mode .work{
+
+.dark-mode .work {
     background-color:#658c9c;
 }
-.dark-mode .personal{
+
+.dark-mode .personal {
     background-color:#7b9c67;
 }
+
 /* prieks navbar */
-nav{
+nav {
     grid-column: 1;
     display: flex;
     flex-direction: column;
@@ -113,6 +132,7 @@ nav{
 .container.nav-collapsed {
     grid-template-columns: 90px 1fr 1fr;
 }
+
 .nav-collapsed .tasks,
 .nav-collapsed .lists,
 .nav-collapsed .tools {
@@ -120,10 +140,12 @@ nav{
     visibility: hidden; 
     transition: opacity 0.5s ease-in-out;
 }
+
 .nav-collapsed .menu {
     display: flex; 
     justify-content: center;
 }
+
 nav .tasks,
 nav .lists,
 nav .tools {
@@ -131,37 +153,44 @@ nav .tools {
 }
 
 /* parejais prieks navbar */
-.top-group{
+.top-group {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.tools{
+
+.tools {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 .lists, .tasks {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.nav_icon{
+
+.nav_icon {
     width: 30px;
     height: 30px;
 }
-.menu{
+
+.menu {
     display: flex;
     justify-content: right;
+    cursor: pointer;
 }
+
 .task_top,
-.lists-top{
+.lists-top {
     display: flex;
     justify-content: left;
     gap:10px;
 }
+
 .tasks button,
-.lists button{
+.lists button {
     border-radius: 5px;
     height: 40px;
     width: 200px;
@@ -170,10 +199,11 @@ nav .tools {
     font-size: 14px;
 }
 
-#txt{
+#txt {
     font-family:'Courier New', Courier, monospace;
     font-size: 18px;
 }
+
 /* add task */
 form {
     display: flex;
@@ -182,7 +212,8 @@ form {
     align-items: center;
     padding-top: 20px;
 }
-input, select, textarea{
+
+input, select, textarea {
     width: 500px;
     height: 40px;
     font-family: 'Courier New', Courier, monospace;
@@ -190,7 +221,8 @@ input, select, textarea{
     border-radius: 5px;
     border: solid 1px;
 }
-form button{
+
+form button {
     height: 30px;
     width: 400px;
 }
@@ -200,20 +232,23 @@ textarea {
     min-height: 100px;
     max-height: 300px;
 }
+
 .add-top, 
-.task-icon{
+.task-icon {
     display: flex;
     justify-content: left;
     gap: 10px;
     align-items: center;
 }
-button[type=submit]{
+
+button[type=submit], .cancel {
     border-radius: 5px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 17px;
     height: 30px;
     width: 300px;
 }
+
 /* output */
 .tasks-output {
     border: 1px solid black;
@@ -229,23 +264,48 @@ button[type=submit]{
     flex-direction: row;
     justify-content: space-between;
 }
-.task-description{
+
+.task-description {
     border: solid 1px;
     padding: 10px;
     margin: 20px;
     border-radius: 5px;
     background-color: #dedbdb;
 }
-.description-label, .task-title{
+
+.description-label, .task-title {
     font-weight: 600;
 }
-.edit{
-    margin:5px;
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.task-actions form { /* priekš delete pogas, lai viņa centerojas vienādi ar edit */
+    display: inline-flex;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.edit, button.delete {
     border-radius: 5px;
     width: 70px;
     height: 30px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
+}
+
+.delete {
+    background-color: #f03043;
+}
+
+.delete:hover {
+    background-color: #c42232;
 }
 
 /* krasas */
@@ -258,6 +318,7 @@ body.dark-mode {/* prieks dark mode */
     --personal-color: #7b9c67; 
     --work-color: #658c9c;     
 }
+
 .personal {/* pieliek pogai */
     background-color: var(--personal-color);
 }
@@ -281,6 +342,7 @@ body.dark-mode {/* prieks dark mode */
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
     }
+
     /* ekrana augspuse */
     nav {
         grid-column: 1; 
@@ -303,6 +365,7 @@ body.dark-mode {/* prieks dark mode */
     .menu {
         display: none;
     }
+
     .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .new-task, .edit-task {
         grid-column: 1;
         margin: 10px;
