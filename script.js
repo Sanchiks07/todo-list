@@ -1,3 +1,4 @@
+// pulkstenis
 function startTime() {
     const now = new Date();
     const time = now.toLocaleTimeString('en-US', { 
@@ -11,6 +12,19 @@ function startTime() {
     setTimeout(startTime, 500);
 }
 window.onload = startTime;
+
+// dark mode 
+function darkMode() {
+    var element = document.body;
+    var button = document.getElementById("dark-mode");
+    var isNowInDarkMode = element.classList.toggle("dark-mode");
+
+    if (isNowInDarkMode) {
+        button.textContent = "Light";
+    } else {
+        button.textContent = "Dark";
+    }
+}
 
 // parāda task description
 function showDesc(taskDesc) {
@@ -59,3 +73,4 @@ const menuToggle = document.getElementById('menu-toggle');
 menuToggle.addEventListener('click', () => {
     container.classList.toggle('nav-collapsed');
 });
+

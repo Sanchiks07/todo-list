@@ -63,7 +63,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
     <div class="container">
         <nav>
             <div class="top-group">
-                <div class="menu" id="menu-toggle">
+                <div class="menu" id="menu-toggle" >
                     <img src="icons/menu.png" class="nav_icon">
                 </div>
                 <div class="tasks">
@@ -90,7 +90,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
             </div>
             <div class="tools">
                 <div id="txt"></div>
-                <button id="dark-mode">Dark</button>    
+                <button id="dark-mode" onclick="darkMode()">Dark</button>    
             </div>
         </nav>
 

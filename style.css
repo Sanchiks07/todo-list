@@ -51,6 +51,49 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     
 }
+#dark-mode{ /* pati poga */
+    width: 60px; 
+    height: 30px;
+    background-color: #1f2937; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;  
+    font-size: 15px;
+    transition: background-color 0.3s; /
+}
+.dark-mode,/* dark-mode funkcija */
+.dark-mode button { 
+    background-color: #49494c;
+    color: white;
+}
+.dark-mode #dark-mode{
+    background-color: rgb(201, 198, 198); 
+    color: #1f2937;
+}
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+    background-color: #333;
+    color: #eee;
+    border: 1px solid #555;
+}
+.dark-mode nav,
+.dark-mode .today-tasks,
+.dark-mode .upcoming-tasks,
+.dark-mode .personal-tasks,
+.dark-mode .work-tasks,
+.dark-mode .all-tasks,
+.dark-mode .new-task,
+.dark-mode .edit-task,
+.dark-mode .task-description {
+    background-color: #282829;
+    color: white;
+}
+.dark-mode .tasks-output{
+    background-color: #1c1c1c;
+    color: white;
+}
 
 /* prieks navbar */
 nav{
@@ -122,17 +165,7 @@ nav .tools {
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
 }
-#dark-mode{
-    width: 60px; 
-    height: 30px;
-    background-color: #1f2937; 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer;  
-    font-size: 15px;
-    transition: background-color 0.3s; /
-}
+
 #txt{
     font-family:'Courier New', Courier, monospace;
     font-size: 18px;
@@ -210,4 +243,49 @@ button[type=submit]{
     height: 30px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
+}
+
+/* mobile versija */
+@media(max-width: 768px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+    /* ekrana augspuse */
+    nav {
+        grid-column: 1; 
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto; 
+        width: auto;
+        overflow: visible; 
+    }
+
+    nav .top-group,
+    nav .lists,
+    nav .tools {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* lai vairs nav sliding opcijas */
+    .menu {
+        display: none;
+    }
+    .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .new-task, .edit-task {
+        grid-column: 1;
+        margin: 10px;
+    }
+    
+    input, select, textarea {
+        width: 90%;
+        margin: auto;
+    }
+
+    form button, .add-list, .edit {
+        width: 80%;
+        margin: auto;
+    }
 }
