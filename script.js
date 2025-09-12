@@ -51,3 +51,11 @@ function editTask(button) {
     form.querySelector('input[name="due_date"]').value = due_date;
     form.querySelector('select[name="list"]').value = list;
 }
+
+// prieks navbar saisinasans ar toogle
+const container = document.querySelector('.container');
+const menuToggle = document.getElementById('menu-toggle');
+
+menuToggle.addEventListener('click', () => {
+    container.classList.toggle('nav-collapsed');
+});

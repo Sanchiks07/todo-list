@@ -30,8 +30,9 @@ button:hover {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
     height: 100vh;
-    font-family: 'Courier New', Courier, monospace;}
-
+    font-family: 'Courier New', Courier, monospace;
+}
+    
 .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks {
     grid-column: 2;
     background-color: #ffffff;
@@ -59,7 +60,34 @@ nav{
     justify-content: space-between;
     padding: 20px;
     background-color: #ffffff;
-    
+}
+
+/* prieks navbar saīsināšanas */
+.container.nav-collapsed {
+    grid-template-columns: 90px 1fr 1fr;
+}
+.nav-collapsed .tasks,
+.nav-collapsed .lists,
+.nav-collapsed .tools {
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.5s ease-in-out;
+}
+.nav-collapsed .menu {
+    display: flex; 
+    justify-content: center;
+}
+nav .tasks,
+nav .lists,
+nav .tools {
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* parejais prieks navbar */
+.top-group{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .tools{
     display: flex;
