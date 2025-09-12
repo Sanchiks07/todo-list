@@ -116,7 +116,8 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><p><?= htmlspecialchars($task["description"]) ?></p>
+                             <p class="description-label">Description:</p>
+                            <p><?= htmlspecialchars($task["description"]) ?></p>
                             <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
@@ -149,7 +150,8 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><p><?= htmlspecialchars($task["description"]) ?></p>
+                             <p class="description-label">Description:</p>
+                            <p><?= htmlspecialchars($task["description"]) ?></p>
                             <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
@@ -182,7 +184,8 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><p><?= htmlspecialchars($task["description"]) ?></p>
+                             <p class="description-label">Description:</p>
+                            <p><?= htmlspecialchars($task["description"]) ?></p>
                             <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
@@ -215,7 +218,8 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><p><?= htmlspecialchars($task["description"]) ?></p>
+                            <p class="description-label">Description:</p>
+                            <p><?= htmlspecialchars($task["description"]) ?></p>
                             <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
@@ -248,7 +252,8 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><p><?= htmlspecialchars($task["description"]) ?><p/>
+                            <p class="description-label">Description:</p>
+                            <p><?= htmlspecialchars($task["description"]) ?><p/>
                             <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
@@ -258,6 +263,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
             <?php } ?>
         </div>
 
+        <!-- add task -->
         <div class="new-task">
             <div class="add-top">
                 <img src="icons/add-post.png" class="nav_icon">

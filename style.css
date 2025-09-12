@@ -21,6 +21,11 @@ time, mark, audio, video {
 body{
     background-color:#e6e6eb;
 }
+button:hover {
+    background-color: #adaaaa; /* Change the background color */
+    border-color: #999; /* Change the border color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
@@ -138,7 +143,13 @@ textarea {
     gap: 10px;
     align-items: center;
 }
-
+button[type=submit]{
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17px;
+    height: 30px;
+    width: 300px;
+}
 /* output */
 .tasks-output {
     border: 1px solid black;
@@ -153,4 +164,22 @@ textarea {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.task-description{
+    border: solid 1px;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+    background-color: #dedbdb;
+}
+.description-label, .task-title{
+    font-weight: 600;
+}
+.edit{
+    margin:5px;
+    border-radius: 5px;
+    width: 70px;
+    height: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
 }
