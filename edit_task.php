@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE tasks SET task = ?, description = ?, list_id = ?, due_date = ? WHERE id = ?";
     $db->query($sql, [$title, $description, $list_id, $due_date, $id]);
 
-    header("Location: index.php");
+    header("Location: index.php?status=task_edited"); // status, ko iegūst js, lai izvadītu pareizo notification
     exit();
 }
 

@@ -109,3 +109,38 @@ function sortTasks(selectElement) {
 
     tasks.forEach(task => container.appendChild(task));
 }
+
+// notification slide-in
+document.addEventListener("DOMContentLoaded", () => {
+    const notification = document.getElementById('notification');
+
+    // pārbauda URL params priekš status
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+
+    if (status) {
+        let message = '';
+        if (status === 'task_added') message = "New task added successfully!";
+        else if (status === 'task_edited') message = "Task updated successfully!";
+        else if (status === 'task_deleted') message = "Task deleted successfully!";
+
+        if (message) {
+            showNotification(message);
+
+            // noņem statusu no URL, lai neparādās pēdējais notification, tad kad reload lapu
+            urlParams.delete('status');
+            const newUrl = window.location.pathname + '?' + urlParams.toString();
+            window.history.replaceState({}, '', newUrl);
+        }
+    }
+
+    function showNotification(message) {
+        notification.textContent = message;
+        notification.classList.add("show");
+
+        // pazūd pēc 3 sekundēm
+        setTimeout(() => {
+            notification.classList.remove("show");
+        }, 3000);
+    }
+});

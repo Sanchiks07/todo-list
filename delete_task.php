@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "DELETE FROM tasks WHERE id = ?";
     $db->query($sql, [$id]);
 
-    header("Location: index.php");
+    header("Location: index.php?status=task_deleted"); // status, ko iegūst js, lai izvadītu pareizo notification
     exit();
 }
 

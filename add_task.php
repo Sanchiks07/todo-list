@@ -17,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO tasks (task, description, list_id, due_date) VALUES (?, ?, ?, ?)";
     $db->query($sql, [$title, $description, $list_id, $due_date]);
 
-    header("Location: index.php");
+    header("Location: index.php?status=task_added"); // status, ko iegūst js, lai izvadītu pareizo notification
     exit();
 }
+
+?>

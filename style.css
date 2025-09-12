@@ -118,6 +118,12 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     background-color:#7b9c67;
 }
 
+.dark-mode #notification {
+    background-color: #2e7d32;
+    color: white;
+    border: 2px solid #1f5222;
+}
+
 /* prieks navbar */
 nav {
     grid-column: 1;
@@ -357,6 +363,27 @@ body.dark-mode {/* prieks dark mode */
     background-color: var(--work-color);
 }
 
+/* notification */
+#notification {
+    position: fixed;
+    top: 20px;
+    right: -450px;
+    background-color: #4caf50;
+    color: black;
+    border: 2px solid #2d662f;
+    padding: 20px 35px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    z-index: 9999;
+    transition: right 0.5s ease-in-out;
+}
+
+#notification.show {
+    right: 20px;
+}
+
 /* mobile versija */
 @media(max-width: 768px) {
     .container {
@@ -401,5 +428,22 @@ body.dark-mode {/* prieks dark mode */
     form button, .add-list, .edit {
         width: 80%;
         margin: auto;
+    }
+
+    #notification {
+        top: -100px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 0;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        font-size: 18px;
+        transition: top 0.5s ease-in-out;
+    }
+
+    #notification.show {
+        top: 0;
     }
 }

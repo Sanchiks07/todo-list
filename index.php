@@ -60,6 +60,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="notification"></div>
     <div class="container">
         <nav>
             <div class="top-group">
@@ -414,8 +415,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
 
         <div class="edit-task" style="display: none;">
             <div class="task-icon">
-                <img src="icons/edit.gif" class="nav_icon">
-                <h2>Edit task</h2>
+                <div class="left-group">
+                    <img src="icons/edit.gif" class="nav_icon">
+                    <h2>Edit task</h2>
+                </div>
             </div>
             <form action="edit_task.php" method="POST">
                 <input type="hidden" name="id">
