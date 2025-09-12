@@ -63,13 +63,24 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
     <div class="container">
         <nav>
             <div class="tasks">
-                <h2>Tasks</h2>
+                <div class="menu">
+                    <img src="icons/menu.png" class="nav_icon">
+                </div>
+                <div class="task_top">
+                    <img src="icons/checklist.png" class="nav_icon">
+                    <h2>Tasks</h2>
+                </div>
+                
                 <button class="upcoming" onclick="showTasks('upcoming-tasks', 'today-tasks', 'all-tasks', 'personal-tasks', 'work-tasks')">Upcoming</button>
                 <button class="today" onclick="showTasks('today-tasks', 'upcoming-tasks', 'all-tasks', 'personal-tasks', 'work-tasks')">Today</button>
 
             </div>
             <div class="lists">
-                <h2>Lists</h2>
+                <div class="lists-top">
+                    <img src="icons/list.png" class="nav_icon">
+                    <h2>Lists</h2>
+                </div>
+                
                 <button class="all" onclick="showTasks('all-tasks', 'today-tasks', 'upcoming-tasks', 'personal-tasks', 'work-tasks')">All</button>
                 <button class="personal" onclick="showTasks('personal-tasks', 'today-tasks', 'all-tasks', 'upcoming-tasks', 'work-tasks')">Personal</button>
                 <button class="work" onclick="showTasks('work-tasks', 'today-tasks', 'all-tasks', 'personal-tasks', 'upcoming-tasks')">Work</button>  
@@ -77,9 +88,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
             </div>
             <div class="tools">
                 <div id="txt"></div>
-                <button class="dark-mode">Dark</button>    
+                <button id="dark-mode">Dark</button>    
             </div>
         </nav>
+
         <!-- Today Tasks -->
         <div class="today-tasks" onclick="showDesc(this)">
             <h2>Today</h2>

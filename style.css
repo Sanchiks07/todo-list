@@ -46,6 +46,8 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 20px;
+    
 }
 .tools{
     display: flex;
@@ -56,6 +58,44 @@ nav{
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.nav_icon{
+    width: 25px;
+    height: 25px;
+}
+.menu{
+    display: flex;
+    justify-content: right;
+}
+.task_top,
+.lists-top{
+    display: flex;
+    justify-content: left;
+    gap:10px;
+}
+.tasks button,
+.lists button{
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+#dark-mode{
+    width: 60px; 
+    height: 30px;
+    background-color: #1f2937; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;  
+    font-size: 15px;
+    transition: background-color 0.3s; /
+}
+#txt{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 18px;
 }
 
 /* add task */
