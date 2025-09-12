@@ -91,10 +91,14 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     color: white;
 }
 .dark-mode .tasks-output{
-    background-color: #1c1c1c;
-    color: white;
+    color: black;
 }
-
+.dark-mode .work{
+    background-color:#658c9c;
+}
+.dark-mode .personal{
+    background-color:#7b9c67;
+}
 /* prieks navbar */
 nav{
     grid-column: 1;
@@ -170,7 +174,6 @@ nav .tools {
     font-family:'Courier New', Courier, monospace;
     font-size: 18px;
 }
-
 /* add task */
 form {
     display: flex;
@@ -243,6 +246,32 @@ button[type=submit]{
     height: 30px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
+}
+
+/* krasas */
+:root {
+    --personal-color: #b9f099;
+    --work-color: #99d1f0;
+}
+
+body.dark-mode {/* prieks dark mode */
+    --personal-color: #7b9c67; 
+    --work-color: #658c9c;     
+}
+.personal {/* pieliek pogai */
+    background-color: var(--personal-color);
+}
+
+.work {
+    background-color: var(--work-color);
+}
+
+.tasks-output[data-list="personal"] {/* pieliek outputam */
+    background-color: var(--personal-color);
+}
+
+.tasks-output[data-list="work"] {
+    background-color: var(--work-color);
 }
 
 /* mobile versija */

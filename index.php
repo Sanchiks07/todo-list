@@ -47,8 +47,8 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
     }
     return false;
 });
-
 ?>
+
 
 
 <!DOCTYPE html>
@@ -116,6 +116,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
                                 <?= date("d-m-Y", strtotime($task["due_date"])) ?>
                             </p>
+                    
                         </div>
                         <div class="task-description" style="display: none;">
                              <p class="description-label">Description:</p>
@@ -150,6 +151,23 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
                                 <?= date("d-m-Y", strtotime($task["due_date"])) ?>
                             </p>
+                            <?php
+                                // cik ilgi vel
+                                $today = new DateTime('today'); 
+                                $dueDate = new DateTime($task["due_date"]);
+                                $interval = $today->diff($dueDate);
+
+                                if ($interval->invert) {
+                                    // nokavetas dienas
+                                    echo '<p class="days-left">Overdue by ' . $interval->days . ' days</p>';
+                                } elseif ($interval->days == 0) {
+                                    // sodien
+                                    echo '<p class="days-left">Due Today!</p>';
+                                } else {
+                                    // vel ir laiks
+                                    echo '<p class="days-left">' . $interval->days . ' days left</p>';
+                                }
+                            ?>
                         </div>
                         <div class="task-description" style="display: none;">
                              <p class="description-label">Description:</p>
@@ -184,6 +202,23 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             <p  class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
                                 <?= date("d-m-Y", strtotime($task["due_date"])) ?>
                             </p>
+                            <?php
+                                // cik ilgi vel
+                                $today = new DateTime('today'); 
+                                $dueDate = new DateTime($task["due_date"]);
+                                $interval = $today->diff($dueDate);
+
+                                if ($interval->invert) {
+                                    // nokavetas dienas
+                                    echo '<p class="days-left">Overdue by ' . $interval->days . ' days</p>';
+                                } elseif ($interval->days == 0) {
+                                    // sodien
+                                    echo '<p class="days-left">Due Today!</p>';
+                                } else {
+                                    // vel ir laiks
+                                    echo '<p class="days-left">' . $interval->days . ' days left</p>';
+                                }
+                            ?>
                         </div>
                         <div class="task-description" style="display: none;">
                              <p class="description-label">Description:</p>
@@ -218,6 +253,23 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
                                 <?= date("d-m-Y", strtotime($task["due_date"])) ?>
                             </p>
+                            <?php
+                                // cik ilgi vel
+                                $today = new DateTime('today'); 
+                                $dueDate = new DateTime($task["due_date"]);
+                                $interval = $today->diff($dueDate);
+
+                                if ($interval->invert) {
+                                    // nokavetas dienas
+                                    echo '<p class="days-left">Overdue by ' . $interval->days . ' days</p>';
+                                } elseif ($interval->days == 0) {
+                                    // sodien
+                                    echo '<p class="days-left">Due Today!</p>';
+                                } else {
+                                    // vel ir laiks
+                                    echo '<p class="days-left">' . $interval->days . ' days left</p>';
+                                }
+                            ?>
                         </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
@@ -252,6 +304,23 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
                                 <?= date("d-m-Y", strtotime($task["due_date"])) ?>
                             </p>
+                            <?php
+                                // cik ilgi vel
+                                $today = new DateTime('today'); 
+                                $dueDate = new DateTime($task["due_date"]);
+                                $interval = $today->diff($dueDate);
+
+                                if ($interval->invert) {
+                                    // nokavetas dienas
+                                    echo '<p class="days-left">Overdue by ' . $interval->days . ' days</p>';
+                                } elseif ($interval->days == 0) {
+                                    // sodien
+                                    echo '<p class="days-left">Due Today!</p>';
+                                } else {
+                                    // vel ir laiks
+                                    echo '<p class="days-left">' . $interval->days . ' days left</p>';
+                                }
+                            ?>
                         </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
