@@ -18,26 +18,32 @@ time, mark, audio, video {
 }
 
 /* Mūsu css */
+body{
+    background-color:#e6e6eb;
+}
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
     height: 100vh;
-}
+    font-family: 'Courier New', Courier, monospace;}
 
 .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks {
     grid-column: 2;
+    background-color: #ffffff;
 }
 
-.new-tisk, .edit-task {
+.new-task, .edit-task {
     grid-column: 3;
+    background-color: #ffffff;
 }
 
 nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .new-task, .edit-task {
     border: 1px solid black;
     padding: 20px;
-    margin: 10px;
+    margin: 20px;
     border-radius: 5px;
-    box-shadow: inset;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    
 }
 
 /* prieks navbar */
@@ -47,6 +53,7 @@ nav{
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
+    background-color: #ffffff;
     
 }
 .tools{
@@ -60,8 +67,8 @@ nav{
     gap: 10px;
 }
 .nav_icon{
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
 }
 .menu{
     display: flex;
@@ -103,12 +110,33 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center;
+    padding-top: 20px;
+}
+input, select, textarea{
+    width: 500px;
+    height: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    border-radius: 5px;
+    border: solid 1px;
+}
+form button{
+    height: 30px;
+    width: 400px;
 }
 
 textarea {
     resize: vertical;
     min-height: 100px;
     max-height: 300px;
+}
+.add-top, 
+.task-icon{
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    align-items: center;
 }
 
 /* output */

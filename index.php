@@ -67,7 +67,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     <img src="icons/menu.png" class="nav_icon">
                 </div>
                 <div class="task_top">
-                    <img src="icons/checklist.png" class="nav_icon">
+                    <img src="icons/checklist.gif" class="nav_icon">
                     <h2>Tasks</h2>
                 </div>
                 
@@ -77,7 +77,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
             </div>
             <div class="lists">
                 <div class="lists-top">
-                    <img src="icons/list.png" class="nav_icon">
+                    <img src="icons/task.gif" class="nav_icon">
                     <h2>Lists</h2>
                 </div>
                 
@@ -94,7 +94,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
 
         <!-- Today Tasks -->
         <div class="today-tasks" onclick="showDesc(this)">
-            <h2>Today</h2>
+            <div class="task-icon">
+                <img src="icons/checklist.gif" class="nav_icon">
+                <h2>Today</h2>
+            </div>
             <?php if (!empty($todayTasks)) { ?>
                 <?php foreach ($todayTasks as $task) { 
                     $listName = '';
@@ -124,7 +127,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         </div>
         <!-- Upcoming Tasks -->
         <div class="upcoming-tasks" style="display: none;" onclick="showDesc(this)">
-            <h2>Upcoming</h2>
+            <div class="task-icon">
+                <img src="icons/task.gif" class="nav_icon">
+                <h2>Upcoming</h2>
+            </div>
             <?php if (!empty($upcomingTasks)) { ?>
                 <?php foreach ($upcomingTasks as $task) {
                     $listName = '';
@@ -154,7 +160,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         </div>
         <!-- Personal Tasks -->
         <div class="personal-tasks" style="display: none;" onclick="showDesc(this)">
-            <h2>Personal</h2>
+            <div class="task-icon">
+                <img src="icons/location.gif" class="nav_icon">
+                <h2>Personal</h2>
+            </div>
             <?php if (!empty($personalTasks)) { ?>
                 <?php foreach ($personalTasks as $task) {
                     $listName = '';
@@ -184,7 +193,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         </div>
         <!-- Work Tasks -->
         <div class="work-tasks" style="display: none;" onclick="showDesc(this)">
-            <h2>Work</h2>
+            <div class="task-icon">
+                <img src="icons/checklist.gif" class="nav_icon">
+                <h2>Work</h2>
+            </div>
             <?php if (!empty($workTasks)) { ?>
                 <?php foreach ($workTasks as $task) { 
                     $listName = '';
@@ -214,7 +226,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         </div>
         <!-- All Tasks -->
         <div class="all-tasks" style="display: none;" onclick="showDesc(this)">
-            <h2>All</h2>
+            <div class="task-icon">
+                <img src="icons/to-do-list.gif" class="nav_icon">
+                <h2>All</h2>
+            </div>
             <?php if (!empty($tasks)) { ?>
                 <?php foreach ($tasks as $task) {
                     $listName = '';
@@ -244,7 +259,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         </div>
 
         <div class="new-task">
-            <h2>Add task</h2>
+            <div class="add-top">
+                <img src="icons/add-post.png" class="nav_icon">
+                <h2>Add task</h2>
+            </div>
             <form action="add_task.php" method="POST">
                 <input type="text" name="title" placeholder="Task..." required>
                 <textarea type="text" name="description" placeholder="Description..."></textarea>
@@ -258,7 +276,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         </div>
 
         <div class="edit-task" style="display: none;">
-            <h2>Edit task</h2>
+            <div class="task-icon">
+                <img src="icons/edit.gif" class="nav_icon">
+                <h2>Edit task</h2>
+            </div>
             <form action="edit_task.php" method="POST">
                 <input type="hidden" name="id">
                 
