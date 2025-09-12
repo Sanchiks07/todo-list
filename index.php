@@ -431,7 +431,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     <option value="work">Work</option>
                 </select>
                 <button type="submit">Save</button>
-                <button class="cancel" onclick="cancelEdit()">Cancel</button>
+                <button type="button" class="cancel" onclick="cancelEdit()">Cancel</button>
             </form>
         </div>
     </div>
