@@ -55,7 +55,7 @@ function editTask(button) {
     const id = taskDiv.dataset.id;
     const list = taskDiv.dataset.list;
     const title = taskDiv.querySelector('.task-title').textContent.trim();
-    const description = taskDiv.querySelector('.task-description p').textContent.trim();
+    const description = taskDiv.querySelectorAll('.task-description p')[1].textContent.trim();
     const due_date = taskDiv.querySelector('.task-date').dataset.rawDate;
 
     const form = document.querySelector('.edit-task form');

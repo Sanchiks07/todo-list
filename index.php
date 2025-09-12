@@ -86,7 +86,6 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <button class="all" onclick="showTasks('all-tasks', 'today-tasks', 'upcoming-tasks', 'personal-tasks', 'work-tasks')">All</button>
                 <button class="personal" onclick="showTasks('personal-tasks', 'today-tasks', 'all-tasks', 'upcoming-tasks', 'work-tasks')">Personal</button>
                 <button class="work" onclick="showTasks('work-tasks', 'today-tasks', 'all-tasks', 'personal-tasks', 'upcoming-tasks')">Work</button>  
-                <button class="add-list">+ Add List</button>
             </div>
             <div class="tools">
                 <div id="txt"></div>
@@ -95,7 +94,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         </nav>
 
         <!-- Today Tasks -->
-        <div class="today-tasks" onclick="showDesc(this)">
+        <div class="today-tasks">
             <div class="task-icon">
                 <img src="icons/checklist.gif" class="nav_icon">
                 <h2>Today</h2>
@@ -110,7 +109,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         }
                     } ?>
 
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
                         <div class="task-header">
                             <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
                             <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
@@ -130,7 +129,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
             <?php } ?>
         </div>
         <!-- Upcoming Tasks -->
-        <div class="upcoming-tasks" style="display: none;" onclick="showDesc(this)">
+        <div class="upcoming-tasks" style="display: none;">
             <div class="task-icon">
                 <img src="icons/task.gif" class="nav_icon">
                 <h2>Upcoming</h2>
@@ -145,7 +144,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         }
                     } ?>
 
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
                         <div class="task-header">
                             <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
                             <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
@@ -181,7 +180,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
             <?php } ?>
         </div>
         <!-- Personal Tasks -->
-        <div class="personal-tasks" style="display: none;" onclick="showDesc(this)">
+        <div class="personal-tasks" style="display: none;">
             <div class="task-icon">
                 <img src="icons/location.gif" class="nav_icon">
                 <h2>Personal</h2>
@@ -196,7 +195,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         }
                     } ?>
 
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
                         <div class="task-header">
                             <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
                             <p  class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
@@ -232,7 +231,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
             <?php } ?>
         </div>
         <!-- Work Tasks -->
-        <div class="work-tasks" style="display: none;" onclick="showDesc(this)">
+        <div class="work-tasks" style="display: none;">
             <div class="task-icon">
                 <img src="icons/checklist.gif" class="nav_icon">
                 <h2>Work</h2>
@@ -247,7 +246,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         }
                     } ?>
 
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
                         <div class="task-header">
                             <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
                             <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
@@ -283,7 +282,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
             <?php } ?>
         </div>
         <!-- All Tasks -->
-        <div class="all-tasks" style="display: none;" onclick="showDesc(this)">
+        <div class="all-tasks" style="display: none;">
             <div class="task-icon">
                 <img src="icons/to-do-list.gif" class="nav_icon">
                 <h2>All</h2>
@@ -298,7 +297,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         }
                     } ?>
 
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
                         <div class="task-header">
                             <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
                             <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
