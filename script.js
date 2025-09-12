@@ -41,13 +41,13 @@ function editTask(button) {
     const id = taskDiv.dataset.id;
     const list = taskDiv.dataset.list;
     const title = taskDiv.querySelector('.task-title').textContent.trim();
-    const description = taskDiv.querySelector('.task-text').textContent.trim();
-    const due_date = taskDiv.querySelector('.task-date').textContent.trim();
+    const description = taskDiv.querySelector('.task-description p').textContent.trim();
+    const due_date = taskDiv.querySelector('.task-date').dataset.rawDate;
 
     const form = document.querySelector('.edit-task form');
-    form.querySelector('input[name='id']').value = id;
-    form.querySelector('input[name='title']').value = title;
-    form.querySelector('textarea[name='description']').value = description;
-    form.querySelector('input[name='due_date']').value = due_date;
-    form.querySelector('select[name='list']').value = list;
+    form.querySelector('input[name="id"]').value = id;
+    form.querySelector('input[name="title"]').value = title;
+    form.querySelector('textarea[name="description"]').value = description;
+    form.querySelector('input[name="due_date"]').value = due_date;
+    form.querySelector('select[name="list"]').value = list;
 }

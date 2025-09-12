@@ -5,15 +5,6 @@ $config = require("config.php");
 $db = new Database($config["database"]);
 
 $tasks = $db->query("SELECT * FROM tasks")->fetchAll();
-$lists = $db->query("SELECT * FROM lists")->fetchAll();
-
-$taskListName = '';
-foreach ($lists as $list) {
-    if ($list['id'] == $task['list_id']) {
-        $taskListName = strtolower($list['name']);
-        break;
-    }
-}
 
 // iegūst šodienas datumu
 $today = date('Y-m-d');
@@ -89,19 +80,29 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <button class="dark-mode">Dark</button>    
             </div>
         </nav>
-
+        <!-- Today Tasks -->
         <div class="today-tasks" onclick="showDesc(this)">
             <h2>Today</h2>
             <?php if (!empty($todayTasks)) { ?>
-                <?php foreach ($todayTasks as $task) { ?>
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $taskListName ?>">
+                <?php foreach ($todayTasks as $task) { 
+                    $listName = '';
+                    foreach ($lists as $list) {
+                        if ($list['id'] == $task['list_id']) {
+                            $listName = strtolower($list['name']);
+                            break;
+                        }
+                    } ?>
+
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
                         <div class="task-header">
-                            <p><?= htmlspecialchars($task["task"]) ?></p>
-                            <p><?= date("d-m-Y", strtotime($task["due_date"])) ?></p>
+                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                            <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                            </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><?= htmlspecialchars($task["description"]) ?>
-                            <button class="edit" onclick="editTask(this); event.stopPropagation()">Edit</button>
+                            <br><p><?= htmlspecialchars($task["description"]) ?></p>
+                            <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
                 <?php } ?>
@@ -109,18 +110,29 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <p>No tasks for today</p>
             <?php } ?>
         </div>
-
+        <!-- Upcoming Tasks -->
         <div class="upcoming-tasks" style="display: none;" onclick="showDesc(this)">
             <h2>Upcoming</h2>
             <?php if (!empty($upcomingTasks)) { ?>
-                <?php foreach ($upcomingTasks as $task) { ?>
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $taskListName ?>">
+                <?php foreach ($upcomingTasks as $task) {
+                    $listName = '';
+                    foreach ($lists as $list) {
+                        if ($list['id'] == $task['list_id']) {
+                            $listName = strtolower($list['name']);
+                            break;
+                        }
+                    } ?>
+
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
                         <div class="task-header">
-                            <p><?= htmlspecialchars($task["task"]) ?></p>
-                            <p><?= date("d-m-Y", strtotime($task["due_date"])) ?></p>
+                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                            <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                            </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><?= htmlspecialchars($task["description"]) ?>
+                            <br><p><?= htmlspecialchars($task["description"]) ?></p>
+                            <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
                 <?php } ?>
@@ -128,18 +140,29 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <p>No upcoming tasks</p>
             <?php } ?>
         </div>
-
+        <!-- Personal Tasks -->
         <div class="personal-tasks" style="display: none;" onclick="showDesc(this)">
             <h2>Personal</h2>
             <?php if (!empty($personalTasks)) { ?>
-                <?php foreach ($personalTasks as $task) { ?>
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $taskListName ?>">
+                <?php foreach ($personalTasks as $task) {
+                    $listName = '';
+                    foreach ($lists as $list) {
+                        if ($list['id'] == $task['list_id']) {
+                            $listName = strtolower($list['name']);
+                            break;
+                        }
+                    } ?>
+
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
                         <div class="task-header">
-                            <p><?= htmlspecialchars($task["task"]) ?></p>
-                            <p><?= date("d-m-Y", strtotime($task["due_date"])) ?></p>
+                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                            <p  class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                            </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><?= htmlspecialchars($task["description"]) ?>
+                            <br><p><?= htmlspecialchars($task["description"]) ?></p>
+                            <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
                 <?php } ?>
@@ -147,18 +170,29 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <p>No personal tasks</p>
             <?php } ?>
         </div>
-
+        <!-- Work Tasks -->
         <div class="work-tasks" style="display: none;" onclick="showDesc(this)">
             <h2>Work</h2>
             <?php if (!empty($workTasks)) { ?>
-                <?php foreach ($workTasks as $task) { ?>
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $taskListName ?>">
+                <?php foreach ($workTasks as $task) { 
+                    $listName = '';
+                    foreach ($lists as $list) {
+                        if ($list['id'] == $task['list_id']) {
+                            $listName = strtolower($list['name']);
+                            break;
+                        }
+                    } ?>
+
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
                         <div class="task-header">
-                            <p><?= htmlspecialchars($task["task"]) ?></p>
-                            <p><?= date("d-m-Y", strtotime($task["due_date"])) ?></p>
+                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                            <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                            </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><?= htmlspecialchars($task["description"]) ?>
+                            <br><p><?= htmlspecialchars($task["description"]) ?></p>
+                            <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
                 <?php } ?>
@@ -166,18 +200,29 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <p>No work tasks</p>
             <?php } ?>
         </div>
-
+        <!-- All Tasks -->
         <div class="all-tasks" style="display: none;" onclick="showDesc(this)">
             <h2>All</h2>
             <?php if (!empty($tasks)) { ?>
-                <?php foreach ($tasks as $task) { ?>
-                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $taskListName ?>">
+                <?php foreach ($tasks as $task) {
+                    $listName = '';
+                    foreach ($lists as $list) {
+                        if ($list['id'] == $task['list_id']) {
+                            $listName = strtolower($list['name']);
+                            break;
+                        }
+                    } ?>
+
+                    <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>">
                         <div class="task-header">
-                            <p><?= htmlspecialchars($task["task"]) ?></p>
-                            <p><?= date("d-m-Y", strtotime($task["due_date"])) ?></p>
+                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                            <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                            </p>
                         </div>
                         <div class="task-description" style="display: none;">
-                            <br><?= htmlspecialchars($task["description"]) ?>
+                            <br><p><?= htmlspecialchars($task["description"]) ?><p/>
+                            <button class="edit" onclick="editTask(this)">Edit</button>
                         </div>
                     </div>
                 <?php } ?>
