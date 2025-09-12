@@ -96,8 +96,10 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         <!-- Today Tasks -->
         <div class="today-tasks">
             <div class="task-icon">
-                <img src="icons/checklist.gif" class="nav_icon">
-                <h2>Today</h2>
+                <div class="left-group">
+                    <img src="icons/checklist.gif" class="nav_icon">
+                    <h2>Today</h2>
+                </div>
             </div>
             <?php if (!empty($todayTasks)) { ?>
                 <?php foreach ($todayTasks as $task) { 
@@ -137,8 +139,15 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         <!-- Upcoming Tasks -->
         <div class="upcoming-tasks" style="display: none;">
             <div class="task-icon">
-                <img src="icons/task.gif" class="nav_icon">
-                <h2>Upcoming</h2>
+                <div class="left-group">
+                    <img src="icons/task.gif" class="nav_icon">
+                    <h2>Upcoming</h2>
+                </div>
+                <select class="sort-tasks" onchange="sortTasks(this)">
+                    <option value="">-- Sort tasks --</option>
+                    <option value="new-to-old">New -> Old</option>
+                    <option value="old-to-new">Old -> New</option>
+                </select>
             </div>
             <?php if (!empty($upcomingTasks)) { ?>
                 <?php foreach ($upcomingTasks as $task) {
@@ -184,7 +193,6 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                                     <button type="submit" class="delete">Delete</button>
                                 </form>
                             </div>
-                            
                         </div>
                     </div>
                 <?php } ?>
@@ -195,8 +203,15 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         <!-- Personal Tasks -->
         <div class="personal-tasks" style="display: none;">
             <div class="task-icon">
-                <img src="icons/location.gif" class="nav_icon">
-                <h2>Personal</h2>
+                <div class="left-group">
+                    <img src="icons/location.gif" class="nav_icon">
+                    <h2>Personal</h2>
+                </div>
+                <select class="sort-tasks" onchange="sortTasks(this)">
+                    <option value="">-- Sort tasks --</option>
+                    <option value="new-to-old">New -> Old</option>
+                    <option value="old-to-new">Old -> New</option>
+                </select>
             </div>
             <?php if (!empty($personalTasks)) { ?>
                 <?php foreach ($personalTasks as $task) {
@@ -242,7 +257,6 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                                     <button type="submit" class="delete">Delete</button>
                                 </form>
                             </div>
-                            
                         </div>
                     </div>
                 <?php } ?>
@@ -253,8 +267,15 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         <!-- Work Tasks -->
         <div class="work-tasks" style="display: none;">
             <div class="task-icon">
-                <img src="icons/checklist.gif" class="nav_icon">
-                <h2>Work</h2>
+                <div class="left-group">
+                    <img src="icons/checklist.gif" class="nav_icon">
+                    <h2>Work</h2>
+                </div>
+                <select class="sort-tasks" onchange="sortTasks(this)">
+                    <option value="">-- Sort tasks --</option>
+                    <option value="new-to-old">New -> Old</option>
+                    <option value="old-to-new">Old -> New</option>
+                </select>
             </div>
             <?php if (!empty($workTasks)) { ?>
                 <?php foreach ($workTasks as $task) { 
@@ -300,7 +321,6 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                                     <button type="submit" class="delete">Delete</button>
                                 </form>
                             </div>
-                            
                         </div>
                     </div>
                 <?php } ?>
@@ -311,8 +331,15 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         <!-- All Tasks -->
         <div class="all-tasks" style="display: none;">
             <div class="task-icon">
-                <img src="icons/to-do-list.gif" class="nav_icon">
-                <h2>All</h2>
+                <div class="left-group">
+                    <img src="icons/to-do-list.gif" class="nav_icon">
+                    <h2>All</h2>
+                </div>
+                <select class="sort-tasks" onchange="sortTasks(this)">
+                    <option value="">-- Sort tasks --</option>
+                    <option value="new-to-old">New -> Old</option>
+                    <option value="old-to-new">Old -> New</option>
+                </select>
             </div>
             <?php if (!empty($tasks)) { ?>
                 <?php foreach ($tasks as $task) {

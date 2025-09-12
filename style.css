@@ -308,6 +308,28 @@ button[type=submit], .cancel {
     background-color: #c42232;
 }
 
+/* task sort */
+.task-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-icon .left-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+select {
+    cursor: pointer;
+}
+
+.sort-tasks {
+    width: 180px;
+}
+
 /* krasas */
 :root {
     --personal-color: #b9f099;
