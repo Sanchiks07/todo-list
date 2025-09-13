@@ -21,15 +21,20 @@ window.onload = () => {
     }
 
     // saglabā checked checkbox's pēc lapas reload
-    const checkbox = document.querySelector('.checkbox');
+    const checkboxes = document.querySelectorAll('.checkbox');
 
-    const savedState = localStorage.getItem('checkboxChecked');
-    if (savedState === 'true') {
-        checkbox.checked = true;
-    }
+    checkboxes.forEach(cb => {
+        const taskId = cb.closest('.tasks-output').dataset.id;
+        const savedState = localStorage.getItem('task_' + taskId);
+        if (savedState === 'true') cb.checked = true;
 
-    checkbox.addEventListener('change', () => {
-        localStorage.setItem('checkboxChecked', checkbox.checked);
+        cb.addEventListener('change', () => {
+            const isChecked = cb.checked;
+            // updato visus checkbox's ar vienādu task id
+            document.querySelectorAll(`.tasks-output[data-id="${taskId}"] .checkbox`)
+                    .forEach(el => el.checked = isChecked);
+            localStorage.setItem('task_' + taskId, isChecked);
+        });
     });
 };
 
