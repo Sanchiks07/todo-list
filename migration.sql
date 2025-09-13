@@ -10,7 +10,7 @@ CREATE TABLE lists (
 CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     task VARCHAR(50) NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    description VARCHAR(150) NOT NULL,
     list_id INT,
     due_date DATE NOT NULL,
     FOREIGN KEY (list_id) REFERENCES lists(id)

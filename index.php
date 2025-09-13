@@ -1,4 +1,11 @@
 <?php
+// saglabā form datus ja tiek izvadīts error
+session_start();
+
+$old_inputs = $_SESSION['old_inputs'] ?? [];
+$error = $_SESSION['error'] ?? '';
+unset($_SESSION['old_inputs'], $_SESSION['error']);
+
 require_once "Database.php";
 
 $config = require("config.php");
@@ -48,8 +55,6 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
     return false;
 });
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="lv">
@@ -412,24 +417,29 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         </div>
 
         <!-- add task -->
-        <div class="new-task">
+        <div class="new-task" style="display: <?= !empty($old_inputs['id']) ? 'none' : 'block' ?>;">
             <div class="add-top">
                 <img src="icons/add-post.png" class="nav_icon">
                 <h2>Add task</h2>
             </div>
             <form action="add_task.php" method="POST">
-                <input type="text" name="title" placeholder="Task..." required>
-                <textarea type="text" name="description" placeholder="Description..."></textarea>
-                <input type="date" name="due_date" required>
+                <!-- izvadās error ja izvēlētais due date ir pagātnē, title > 50 chars, description > 150 chars -->
+                <?php if (!empty($error)) : ?>
+                    <p style="color: red"><?= $error ?></p>
+                <?php endif; ?>
+
+                <input type="text" name="title" placeholder="Task..." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
+                <textarea name="description" placeholder="Description..."><?= isset($old_inputs['description']) ? htmlspecialchars($old_inputs['description']) : '' ?></textarea>
+                <input type="date" name="due_date" required value="<?= isset($old_inputs['due_date']) ? htmlspecialchars($old_inputs['due_date']) : '' ?>">
                 <select name="list">
-                    <option value="personal">Personal</option>
-                    <option value="work">Work</option>
+                    <option value="personal" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'personal') ? 'selected' : '' ?>>Personal</option>
+                    <option value="work" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'work') ? 'selected' : '' ?>>Work</option>
                 </select>
                 <button type="submit">Save</button>
             </form>
         </div>
 
-        <div class="edit-task" style="display: none;">
+        <div class="edit-task" style="display: <?= !empty($old_inputs['id']) ? 'block' : 'none' ?>;">
             <div class="task-icon">
                 <div class="left-group">
                     <img src="icons/edit.gif" class="nav_icon">
@@ -437,14 +447,19 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 </div>
             </div>
             <form action="edit_task.php" method="POST">
-                <input type="hidden" name="id">
+                <!-- izvadās error ja izvēlētais due date ir pagātnē, title > 50 chars, description > 150 chars -->
+                <?php if (!empty($error)) : ?>
+                    <p style="color: red"><?= $error ?></p>
+                <?php endif; ?>
+
+                <input type="hidden" name="id" value="<?= isset($old_inputs['id']) ? htmlspecialchars($old_inputs['id']) : '' ?>">
                 
-                <input type="text" name="title" placeholder="Task..." required>
-                <textarea type="text" name="description" placeholder="Description..."></textarea>
-                <input type="date" name="due_date" required>
+                <input name="title" placeholder="Task..." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
+                <textarea type="text" name="description" placeholder="Description..."><?= isset($old_inputs['description']) ? htmlspecialchars($old_inputs['description']) : '' ?></textarea>
+                <input type="date" name="due_date" required value="<?= isset($old_inputs['due_date']) ? htmlspecialchars($old_inputs['due_date']) : '' ?>">
                 <select name="list">
-                    <option value="personal">Personal</option>
-                    <option value="work">Work</option>
+                    <option value="personal" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'personal') ? 'selected' : '' ?>>Personal</option>
+                    <option value="work" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'work') ? 'selected' : '' ?>>Work</option>
                 </select>
                 <button type="submit">Save</button>
                 <button type="button" class="cancel" onclick="cancelEdit()">Cancel</button>

@@ -20,9 +20,9 @@ window.onload = () => {
         document.getElementById("dark-mode").textContent = "Light";
     }
 
+    // saglabā checked checkbox's pēc lapas reload
     const checkbox = document.querySelector('.checkbox');
 
-    // saglabā checked checkbox's pēc lapas reload
     const savedState = localStorage.getItem('checkboxChecked');
     if (savedState === 'true') {
         checkbox.checked = true;
