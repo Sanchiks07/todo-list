@@ -23,7 +23,7 @@ body {
 }
 
 button:hover {
-    background-color: #adaaaa;
+    background-color: #d4cfcf;
     border-color: #999;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -150,12 +150,25 @@ nav {
 .nav-collapsed .menu {
     display: flex; 
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
-
+.nav-collapsed .top-group{
+    order:2;
+}
+.nav-collapsed .lists{
+    order:1;
+}
+.nav-collapsed .tools{
+    order:3;
+}
 nav .tasks,
 nav .lists,
 nav .tools {
     transition: opacity 0.5s ease-in-out;
+}
+.nav-collapsed nav{
+    background-color: rgb(246, 237, 224);
 }
 
 /* parejais prieks navbar */
@@ -186,6 +199,12 @@ nav .tools {
     display: flex;
     justify-content: right;
     cursor: pointer;
+    height: 35px;
+}
+.menu img:hover{
+    width: 33px;
+    height: 33px;
+    transition: opacity 0.7s ease-in-out;
 }
 
 .task_top,
@@ -226,11 +245,15 @@ input, select, textarea {
     font-size: 16px;
     border-radius: 5px;
     border: solid 1px;
+    box-shadow: 3px 3px 3px rgb(141, 139, 139);
+    background-color: #e6e6eb;
+    opacity: 0.6;
 }
 
 form button {
     height: 30px;
     width: 400px;
+    background-color: #bbecc2;
 }
 
 textarea {
@@ -254,10 +277,15 @@ button[type=submit], .cancel {
     height: 30px;
     width: 300px;
 }
+.new-task label{
+    font-weight:700;
+    color: #333;
+    font-size: 14pt;
 
+}
 /* output */
 .tasks-output {
-    border: 1px solid black;
+    border: 1px solid ;
     padding: 20px;
     margin: 10px;
     border-radius: 5px;
@@ -277,7 +305,7 @@ button[type=submit], .cancel {
     padding: 10px;
     margin: 20px;
     border-radius: 5px;
-    background-color: #dedbdb;
+    background-color: #f4efe8;
 }
 
 .description-label, .task-title {
@@ -366,7 +394,6 @@ button[type=submit], .cancel {
     opacity: 0.3;
     cursor: not-allowed;
 }
-
 
 /* task sort */
 .task-icon {

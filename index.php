@@ -419,7 +419,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
         <!-- add task -->
         <div class="new-task" style="display: <?= !empty($old_inputs['id']) ? 'none' : 'block' ?>;">
             <div class="add-top">
-                <img src="icons/add-post.png" class="nav_icon">
+                <img src="icons/add.gif" class="nav_icon">
                 <h2>Add task</h2>
             </div>
             <form action="add_task.php" method="POST">
@@ -427,14 +427,25 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <?php if (!empty($error)) : ?>
                     <p style="color: red"><?= $error ?></p>
                 <?php endif; ?>
-
-                <input type="text" name="title" placeholder="Task..." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
-                <textarea name="description" placeholder="Description..."><?= isset($old_inputs['description']) ? htmlspecialchars($old_inputs['description']) : '' ?></textarea>
-                <input type="date" name="due_date" required value="<?= isset($old_inputs['due_date']) ? htmlspecialchars($old_inputs['due_date']) : '' ?>">
-                <select name="list">
-                    <option value="personal" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'personal') ? 'selected' : '' ?>>Personal</option>
-                    <option value="work" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'work') ? 'selected' : '' ?>>Work</option>
-                </select>
+                <div class="inputs">
+                    <label for="title">Task:</label><br>
+                    <input type="text" name="title" placeholder="I have to ...." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
+                </div>
+                <div class="inputs">
+                    <label for="description">Description:</label><br>
+                    <textarea name="description" placeholder="About task ..."><?= isset($old_inputs['description']) ? htmlspecialchars($old_inputs['description']) : '' ?></textarea>
+                </div>
+                <div class="inputs">
+                    <label for="date">Due date:</label><br>
+                    <input type="date" name="due_date" required value="<?= isset($old_inputs['due_date']) ? htmlspecialchars($old_inputs['due_date']) : '' ?>">
+                </div>
+                <div class="inputs">
+                    <label for="list">List:</label><br>
+                    <select name="list">
+                        <option value="personal" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'personal') ? 'selected' : '' ?>>Personal</option>
+                        <option value="work" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'work') ? 'selected' : '' ?>>Work</option>
+                    </select>
+                </div>
                 <button type="submit">Save</button>
             </form>
         </div>
@@ -453,16 +464,27 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <?php endif; ?>
 
                 <input type="hidden" name="id" value="<?= isset($old_inputs['id']) ? htmlspecialchars($old_inputs['id']) : '' ?>">
-                
-                <input name="title" placeholder="Task..." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
-                <textarea type="text" name="description" placeholder="Description..."><?= isset($old_inputs['description']) ? htmlspecialchars($old_inputs['description']) : '' ?></textarea>
-                <input type="date" name="due_date" required value="<?= isset($old_inputs['due_date']) ? htmlspecialchars($old_inputs['due_date']) : '' ?>">
-                <select name="list">
-                    <option value="personal" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'personal') ? 'selected' : '' ?>>Personal</option>
-                    <option value="work" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'work') ? 'selected' : '' ?>>Work</option>
-                </select>
+                <div class="inputs">
+                    <label for="title">Task:</label><br>
+                    <input name="title" placeholder="Task..." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
+                </div>
+                <div class="inputs">
+                    <label for="description">Description:</label><br>
+                    <textarea type="text" name="description" placeholder="Description..."><?= isset($old_inputs['description']) ? htmlspecialchars($old_inputs['description']) : '' ?></textarea>          
+                </div>
+                <div class="inputs">
+                    <label for="date">Due date:</label><br>
+                    <input type="date" name="due_date" required value="<?= isset($old_inputs['due_date']) ? htmlspecialchars($old_inputs['due_date']) : '' ?>">
+                </div>
+                <div class="inputs">
+                    <label for="list">List:</label><br>
+                    <select name="list">
+                        <option value="personal" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'personal') ? 'selected' : '' ?>>Personal</option>
+                        <option value="work" <?= (isset($old_inputs['list']) && $old_inputs['list'] === 'work') ? 'selected' : '' ?>>Work</option>
+                    </select>
+                </div>
                 <button type="submit">Save</button>
-                <button type="button" class="cancel" onclick="cancelEdit()">Cancel</button>
+                <button type="button" class="cancel" onclick="cancelEdit()" style="background-color:rgb(238, 138, 138)">Cancel</button>
             </form>
         </div>
     </div>
