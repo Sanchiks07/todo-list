@@ -269,6 +269,7 @@ button[type=submit], .cancel {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .task-description {
@@ -313,7 +314,50 @@ button[type=submit], .cancel {
 .delete:hover {
     background-color: #c42232;
 }
+.linija{
+    display: grid;
+    grid-template-columns: 1fr 25px;
+    gap: 25px;
+}
+.checkbox {
+    /* paslēpj orģinālo checkbox */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #94a3b8; 
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    outline: none;
+    margin-right: 20px;
+}
+.checkbox:checked {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 14px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: translate(-50%, -65%) rotate(45deg);
+}
+
+/* ar has() izsvītro visu kastīti */
+.tasks-output:has(.checkbox:checked) {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
 /* task sort */
 .task-icon {
     display: flex;

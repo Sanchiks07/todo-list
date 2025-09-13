@@ -113,13 +113,16 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     } ?>
 
                     <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
-                        <div class="task-header">
-                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
-                            <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
-                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
-                            </p>
-                    
+                        <div class="linija">
+                            <div class="task-header">
+                                <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                                <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                    <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                                </p>
+                            </div>
+                            <input class="checkbox" name="task_done" type="checkbox" onclick="event.stopPropagation();">
                         </div>
+
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
                             <p><?= htmlspecialchars($task["description"]) ?></p>
@@ -161,11 +164,13 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     } ?>
 
                     <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
-                        <div class="task-header">
-                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
-                            <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
-                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
-                            </p>
+                        <div class="linija">
+                            <div class="task-header">
+                                <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                                <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                    <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                                </p>
+                                
                             <?php
                                 // cik ilgi vel
                                 $today = new DateTime('today'); 
@@ -183,7 +188,9 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                                     echo '<p class="days-left">' . $interval->days . ' days left</p>';
                                 }
                             ?>
-                        </div>
+                            </div>
+                        <input class="checkbox" name="task_done" type="checkbox" onclick="event.stopPropagation();">
+                    </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
                             <p><?= htmlspecialchars($task["description"]) ?></p>
@@ -225,6 +232,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     } ?>
 
                     <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
+                        <div class="linija">
                         <div class="task-header">
                             <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
                             <p  class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
@@ -248,6 +256,8 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                                 }
                             ?>
                         </div>
+                        <input class="checkbox" name="task_done" type="checkbox" onclick="event.stopPropagation();">
+                    </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
                             <p><?= htmlspecialchars($task["description"]) ?></p>
@@ -289,28 +299,31 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     } ?>
 
                     <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
-                        <div class="task-header">
-                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
-                            <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
-                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
-                            </p>
-                            <?php
-                                // cik ilgi vel
-                                $today = new DateTime('today'); 
-                                $dueDate = new DateTime($task["due_date"]);
-                                $interval = $today->diff($dueDate);
+                        <div class="linija">
+                            <div class="task-header">
+                                <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                                <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                    <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                                </p>
+                                <?php
+                                    // cik ilgi vel
+                                    $today = new DateTime('today'); 
+                                    $dueDate = new DateTime($task["due_date"]);
+                                    $interval = $today->diff($dueDate);
 
-                                if ($interval->invert) {
-                                    // nokavetas dienas
-                                    echo '<p class="days-left">Overdue by ' . $interval->days . ' days</p>';
-                                } elseif ($interval->days == 0) {
-                                    // sodien
-                                    echo '<p class="days-left">Due Today!</p>';
-                                } else {
-                                    // vel ir laiks
-                                    echo '<p class="days-left">' . $interval->days . ' days left</p>';
-                                }
-                            ?>
+                                    if ($interval->invert) {
+                                        // nokavetas dienas
+                                        echo '<p class="days-left">Overdue by ' . $interval->days . ' days</p>';
+                                    } elseif ($interval->days == 0) {
+                                        // sodien
+                                        echo '<p class="days-left">Due Today!</p>';
+                                    } else {
+                                        // vel ir laiks
+                                        echo '<p class="days-left">' . $interval->days . ' days left</p>';
+                                    }
+                                ?>
+                            </div>
+                            <input class="checkbox" name="task_done" type="checkbox" onclick="event.stopPropagation();">
                         </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
@@ -353,28 +366,31 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     } ?>
 
                     <div class="tasks-output" data-id="<?= $task['id'] ?>" data-list="<?= $listName ?>" onclick="showDesc(this)">
-                        <div class="task-header">
-                            <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
-                            <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
-                                <?= date("d-m-Y", strtotime($task["due_date"])) ?>
-                            </p>
-                            <?php
-                                // cik ilgi vel
-                                $today = new DateTime('today'); 
-                                $dueDate = new DateTime($task["due_date"]);
-                                $interval = $today->diff($dueDate);
+                        <div class="linija">
+                            <div class="task-header">
+                                <p class="task-title"><?= htmlspecialchars($task["task"]) ?></p>
+                                <p class="task-date" data-raw-date="<?= htmlspecialchars($task["due_date"]) ?>">
+                                    <?= date("d-m-Y", strtotime($task["due_date"])) ?>
+                                </p>
+                                <?php
+                                    // cik ilgi vel
+                                    $today = new DateTime('today'); 
+                                    $dueDate = new DateTime($task["due_date"]);
+                                    $interval = $today->diff($dueDate);
 
-                                if ($interval->invert) {
-                                    // nokavetas dienas
-                                    echo '<p class="days-left">Overdue by ' . $interval->days . ' days</p>';
-                                } elseif ($interval->days == 0) {
-                                    // sodien
-                                    echo '<p class="days-left">Due Today!</p>';
-                                } else {
-                                    // vel ir laiks
-                                    echo '<p class="days-left">' . $interval->days . ' days left</p>';
-                                }
-                            ?>
+                                    if ($interval->invert) {
+                                        // nokavetas dienas
+                                        echo '<p class="days-left">Overdue by ' . $interval->days . ' days</p>';
+                                    } elseif ($interval->days == 0) {
+                                        // sodien
+                                        echo '<p class="days-left">Due Today!</p>';
+                                    } else {
+                                        // vel ir laiks
+                                        echo '<p class="days-left">' . $interval->days . ' days left</p>';
+                                    }
+                                ?>
+                            </div>
+                            <input class="checkbox" name="task_done" type="checkbox" onclick="event.stopPropagation();">
                         </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
