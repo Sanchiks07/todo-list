@@ -361,6 +361,12 @@ button[type=submit], .cancel {
     text-decoration: line-through;
     opacity: 0.6;
 }
+.tasks-output:has(.checkbox:checked) .edit {
+    pointer-events: none;
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
 
 /* task sort */
 .task-icon {
