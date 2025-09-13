@@ -107,16 +107,19 @@ menuToggle.addEventListener('click', () => {
 function sortTasks(selectElement) {
     const container = selectElement.closest('div.task-icon').parentElement;
     const tasks = Array.from(container.querySelectorAll('.tasks-output'));
-
     const order = selectElement.value;
 
     // ja nav izvēlēts nekāds sort, tad neko nedara
     if (!order) return;
 
-    tasks.sort((a, b) => {
+    tasks.sort(function(a, b) {
         const dateA = new Date(a.querySelector('.task-date').dataset.rawDate);
         const dateB = new Date(b.querySelector('.task-date').dataset.rawDate);
-        return order === 'new-to-old' ? dateB - dateA : dateA - dateB;
+        if (order === 'new-to-old') {
+            return dateB - dateA;
+        } else {
+            return dateA - dateB;
+        }
     });
 
     tasks.forEach(task => container.appendChild(task));
