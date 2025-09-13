@@ -19,6 +19,18 @@ window.onload = () => {
         document.body.classList.add("dark-mode");
         document.getElementById("dark-mode").textContent = "Light";
     }
+
+    const checkbox = document.querySelector('.checkbox');
+
+    // saglabā checked checkbox's pēc lapas reload
+    const savedState = localStorage.getItem('checkboxChecked');
+    if (savedState === 'true') {
+        checkbox.checked = true;
+    }
+
+    checkbox.addEventListener('change', () => {
+        localStorage.setItem('checkboxChecked', checkbox.checked);
+    });
 };
 
 // dark mode 
