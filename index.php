@@ -130,7 +130,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
 
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
-                            <p><?= htmlspecialchars($task["description"]) ?></p>
+                            <p><?= nl2br(htmlspecialchars($task["description"])) ?></p>
                             <div class="task-actions">
                                 <button class="edit" onclick="editTask(this)">Edit</button>
                                 <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
@@ -140,6 +140,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                             </div>
                         </div>
                     </div>
+                    
                 <?php } ?>
             <?php } else { ?>
                 <p>No tasks for today</p>
@@ -198,7 +199,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
-                            <p><?= htmlspecialchars($task["description"]) ?></p>
+                            <p><?= nl2br(htmlspecialchars($task["description"])) ?></p>
                             <div class="task-actions">
                                 <button class="edit" onclick="editTask(this)">Edit</button>
                                 <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
@@ -265,7 +266,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                     </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
-                            <p><?= htmlspecialchars($task["description"]) ?></p>
+                            <p><?= nl2br(htmlspecialchars($task["description"])) ?></p>
                             <div class="task-actions">
                                 <button class="edit" onclick="editTask(this)">Edit</button>
                                 <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
@@ -332,7 +333,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
-                            <p><?= htmlspecialchars($task["description"]) ?></p>
+                            <p><?= nl2br(htmlspecialchars($task["description"])) ?></p>
                             <div class="task-actions">
                                 <button class="edit" onclick="editTask(this)">Edit</button>
                                 <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
@@ -399,7 +400,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                         </div>
                         <div class="task-description" style="display: none;">
                             <p class="description-label">Description:</p>
-                            <p><?= htmlspecialchars($task["description"]) ?><p/>
+                            <p><?= nl2br(htmlspecialchars($task["description"])) ?><p/>
                             <div class="task-actions">
                                 <button class="edit" onclick="editTask(this)">Edit</button>
                                 <form action="delete_task.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
@@ -407,9 +408,9 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                                     <button type="submit" class="delete">Delete</button>
                                 </form>
                             </div>
-                            
                         </div>
                     </div>
+
                 <?php } ?>
             <?php } else { ?>
                 <p>No tasks added yet</p>
@@ -429,7 +430,7 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <?php endif; ?>
                 <div class="inputs">
                     <label for="title">Task:</label><br>
-                    <input type="text" name="title" placeholder="I have to ...." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
+                    <input type="text" name="title" placeholder="I have to ..." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
                 </div>
                 <div class="inputs">
                     <label for="description">Description:</label><br>
@@ -466,11 +467,11 @@ $workTasks = array_filter($tasks, function($task) use ($listIds) {
                 <input type="hidden" name="id" value="<?= isset($old_inputs['id']) ? htmlspecialchars($old_inputs['id']) : '' ?>">
                 <div class="inputs">
                     <label for="title">Task:</label><br>
-                    <input name="title" placeholder="Task..." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
+                    <input name="title" placeholder="I have to ..." required value="<?= isset($old_inputs['title']) ? htmlspecialchars($old_inputs['title']) : '' ?>">
                 </div>
                 <div class="inputs">
                     <label for="description">Description:</label><br>
-                    <textarea type="text" name="description" placeholder="Description..."><?= isset($old_inputs['description']) ? htmlspecialchars($old_inputs['description']) : '' ?></textarea>          
+                    <textarea type="text" name="description" placeholder="About task ..."><?= isset($old_inputs['description']) ? htmlspecialchars($old_inputs['description']) : '' ?></textarea>          
                 </div>
                 <div class="inputs">
                     <label for="date">Due date:</label><br>

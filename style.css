@@ -17,7 +17,7 @@ time, mark, audio, video {
 	border: 0;
 }
 
-/* Mūsu css */
+/* ----------MŪSU CSS---------- */
 body {
     background-color:#e6e6eb;
 }
@@ -38,12 +38,16 @@ button:hover {
     
 .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks {
     grid-column: 2;
-    background-color: #ffffff;
+    background-color: white;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-top: 0 !important;
 }
 
 .new-task, .edit-task {
     grid-column: 3;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .new-task, .edit-task {
@@ -54,6 +58,7 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+/* ----------DARK MODE---------- */
 #dark-mode { /* pati poga */
     width: 60px; 
     height: 30px;
@@ -124,14 +129,14 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     border: 2px solid #1f5222;
 }
 
-/* prieks navbar */
+/* ----------NAVBAR---------- */
 nav {
     grid-column: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 /* prieks navbar saīsināšanas */
@@ -229,7 +234,7 @@ nav .tools {
     font-size: 18px;
 }
 
-/* add task */
+/* ----------ADD TASK---------- */
 form {
     display: flex;
     flex-direction: column;
@@ -283,7 +288,8 @@ button[type=submit], .cancel {
     font-size: 14pt;
 
 }
-/* output */
+
+/* ----------OUTPUT---------- */
 .tasks-output {
     border: 1px solid ;
     padding: 20px;
@@ -306,6 +312,7 @@ button[type=submit], .cancel {
     margin: 20px;
     border-radius: 5px;
     background-color: #f4efe8;
+    word-wrap: break-word;
 }
 
 .description-label, .task-title {
@@ -349,6 +356,7 @@ button[type=submit], .cancel {
     gap: 25px;
 }
 
+/* ----------CHECKBOX---------- */
 .checkbox {
     /* paslēpj orģinālo checkbox */
     appearance: none;
@@ -395,12 +403,17 @@ button[type=submit], .cancel {
     cursor: not-allowed;
 }
 
-/* task sort */
+/* ----------TASK SORT---------- */
 .task-icon {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: inherit;
+    padding: 20px 0 20px;
 }
 
 .task-icon .left-group {
@@ -417,7 +430,7 @@ select {
     width: 180px;
 }
 
-/* krasas */
+/* ----------KRĀSAS---------- */
 :root {
     --personal-color: #b9f099;
     --work-color: #99d1f0;
@@ -444,7 +457,7 @@ body.dark-mode {/* prieks dark mode */
     background-color: var(--work-color);
 }
 
-/* notification */
+/* ----------NOTIFICATION---------- */
 #notification {
     position: fixed;
     top: 20px;
@@ -465,7 +478,7 @@ body.dark-mode {/* prieks dark mode */
     right: 20px;
 }
 
-/* mobile versija */
+/* ----------RESPONSIVE (MOBILE)---------- */
 @media(max-width: 768px) {
     .container {
         display: grid;
@@ -480,7 +493,8 @@ body.dark-mode {/* prieks dark mode */
         justify-content: flex-start;
         height: auto; 
         width: auto;
-        overflow: visible; 
+        overflow: visible;
+        margin: 10px;
     }
 
     nav .top-group,
@@ -496,11 +510,22 @@ body.dark-mode {/* prieks dark mode */
         display: none;
     }
 
-    .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .new-task, .edit-task {
+    .new-task, .edit-task {
         grid-column: 1;
         margin: 10px;
+        padding: 10px;
     }
-    
+
+    .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks {
+        grid-column: 1;
+        width: calc(100% - 20px);
+        margin: 10px;
+        padding: 10px;
+        height: calc(100vh - 80px);
+        overflow-y: scroll;
+        width: inherit;
+    }
+
     input, select, textarea {
         width: 90%;
         margin: auto;
@@ -526,4 +551,23 @@ body.dark-mode {/* prieks dark mode */
     #notification.show {
         top: 0;
     }
+}
+
+/* ----------SCROLLBAR---------- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #b7b7b799;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #93939399;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 90px 0 28px;
 }
