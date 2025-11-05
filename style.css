@@ -31,9 +31,11 @@ button:hover {
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: minmax(200px, 1fr) minmax(300px, 2fr) minmax(300px, 2fr);
     height: 100vh;
     font-family: 'Courier New', Courier, monospace;
+    max-width: 100%;
+    overflow-x: hidden;
 }
     
 .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks {
@@ -127,6 +129,10 @@ nav, .today-tasks, .upcoming-tasks, .personal-tasks, .work-tasks, .all-tasks, .n
     background-color: #2e7d32;
     color: white;
     border: 2px solid #1f5222;
+}
+
+.dark-mode .inputs label {
+    color: white;
 }
 
 /* ----------NAVBAR---------- */
@@ -223,10 +229,11 @@ nav .tools {
 .lists button {
     border-radius: 5px;
     height: 40px;
-    width: 200px;
+    width: 100%;
     margin: auto;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
+    box-sizing: border-box;
 }
 
 #txt {
@@ -239,12 +246,17 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: center;
-    padding-top: 20px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.inputs {
+    width: 100%;
 }
 
 input, select, textarea {
-    width: 500px;
+    width: 100%;
     height: 40px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
@@ -253,12 +265,15 @@ input, select, textarea {
     box-shadow: 3px 3px 3px rgb(141, 139, 139);
     background-color: #e6e6eb;
     opacity: 0.6;
+    box-sizing: border-box;
+    padding: 0 10px;
 }
 
 form button {
     height: 30px;
-    width: 400px;
+    width: 100%;
     background-color: #bbecc2;
+    box-sizing: border-box;
 }
 
 textarea {
@@ -280,7 +295,8 @@ button[type=submit], .cancel {
     font-family: 'Courier New', Courier, monospace;
     font-size: 17px;
     height: 30px;
-    width: 300px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .new-task label{
     font-weight:700;
@@ -526,14 +542,30 @@ body.dark-mode {/* prieks dark mode */
         width: inherit;
     }
 
+    /* Make form elements stretch across the form on small screens */
+    form {
+        align-items: stretch; /* allow children to take full width */
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .inputs {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
     input, select, textarea {
-        width: 90%;
-        margin: auto;
+        width: 100%;
+        margin: 0 0 10px 0;
+        box-sizing: border-box;
+        padding: 8px 10px;
     }
 
     form button, .add-list, .edit {
-        width: 80%;
-        margin: auto;
+        width: 100%;
+        margin: 6px 0;
+        box-sizing: border-box;
     }
 
     #notification {
